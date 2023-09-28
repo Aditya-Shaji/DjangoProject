@@ -5,3 +5,8 @@ class District(models.Model):
     name=models.CharField(max_length=50)
 class Catgeory(models.Model):
     category=models.CharField(max_length=50)
+class Register(models.Model):
+    name=models.CharField(max_length=50)
+    contact=models.CharField(max_length=50)
+    email=models.EmailField(max_length=50)
+    password=models.CharField(max_length=10)

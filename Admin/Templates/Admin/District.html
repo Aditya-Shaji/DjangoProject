@@ -14,7 +14,7 @@
                     District
                 </td>
                 <td>
-                    <input type="text" name="district" id="District">
+                    <input type="text" name="district" id="District" value="{{edit.name}}">
                 </td>
             </tr>
             <tr>
@@ -22,5 +22,21 @@
             </tr>
         </table>
     </form>
+    <table>
+       <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Action</th>
+       </tr>
+       {% for i in dis %}
+       <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.name}}</td>
+        <td><a href="{% url 'webadmin:deleted' i.id %}">Delete</a>
+            <a href="{% url 'webadmin:edited' i.id %}">Edit</a>
+        </td>
+       </tr>
+       {% endfor %}
+    </table>
 </body>
 </html>
