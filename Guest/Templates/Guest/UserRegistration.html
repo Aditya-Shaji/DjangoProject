@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+<body>
+	<form action=""  method="post" id="userReg" data-place-url="{% url 'webguest:ajaxplace'%}" enctype="multipart/form-data">
+		{% csrf_token %}
+        <table border="2">
+			<tr>
+				<td> Name</td>
+				<td colspan ="2"><input type="text" name="txtfname" placeholder="Name"></td>
+			</tr>
+			
+
+			<tr>
+				<td>Gender</td>
+				<td><input type="radio" id="male" name="gender" value="Male">Male</td>
+				<td><input type="radio" id="female" name="gender" value="Female">Female</td>
+			</tr> 
+
+			<tr>
+				<td>Contact</td>
+				<td colspan ="2"><input type="text" name="txtcontact" placeholder="Contact" maxlength="10"></td>
+			</tr>
+
+			<tr>
+				<td>Email</td>
+				<td colspan ="2"><input type="text" name="txtemail" placeholder="Password"></td>
+			</tr>
+
+			<tr>
+				<td>Password</td>
+				<td colspan ="2"><input type="password" name="ppassword" placeholder="Enter password"></td>
+			</tr>
+
+			<tr>
+				<td>Confirm Password</td>
+				<td colspan ="2"><input type="password" name="cpassword" placeholder="Contact"></td>
+			</tr>
+			
+			<tr>
+				<td>DOB</td>
+				<td colspan ="2"><input type="date" name="dob" "></td>
+			</tr>
+
+			<tr>
+				<td>Address</td>
+				<td colspan ="2"><textarea rows="3" cols="20" name="address"></textarea></td>
+			</tr>
+
+
+			<tr>
+				<td>Photo</td>
+				<td colspan ="2"><input type="file" id="img" name="img" accept="image/*"></td>
+			</tr>
+		
+				<tr>
+					<td>
+						District
+					</td>
+					<td><select name="district" id="seldis">
+						<option value="">---Select---</option>
+						{% for i in dis %}
+						<option value="{{i.id}}">{{i.name}}</option>
+						{% endfor %}
+					</select></td>
+				</tr>
+				
+		
+				<tr>
+					<td>
+						place
+					</td>
+					<td>
+						<select name="place" id="selpla">
+							<option value="">place</option>
+						</select>
+					</td>
+				</tr>
+				
+			
+
+			<tr>
+				<td> <input type="checkbox" id="agree" name="agree" required></td>
+				<td colspan ="2">I agree to the terms and conditions</td>
+			</tr>
+			
+			<tr>
+				<td colspan=3 align="center"><input type="submit" id="submitButton" ><input type="reset" value="Cancel">
+						</td>
+			</tr>
+	</table>
+	</form>
+</html>	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#seldis").change(function () {//after hash is id of district
+        var did = $(this).val();//value of seldis form is stored into did
+        var ur = $("#userReg").attr("data-place-url");//after has is id of form,url put in form is
+		// requested
+        $.ajax({
+            url: ur,//url parameter,request chetha page
+            data: { disd: did, },// disd is a key used in views
+            success: function (data) { //response to request  as "data"
+                $("#selpla").html(data);//sucess data is given to  selplace form
+            },
+        });
+    });
+
+</script>
+
+
+			
+			

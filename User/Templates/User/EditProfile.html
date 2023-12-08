@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editprofile</title>
+</head>
+<body>
+    <form action=""  method="post" id="editprofile">
+        {% csrf_token %}
+        <table border ="2" align="center" cellpadding="10">
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="ename" value="{{un.name}}"></td>
+			</tr>
+
+            <tr>
+				<td>Contact</td>
+				<td><input type="text" name="econtact" value="{{un.contact}}"></td>
+			</tr>
+
+            <tr>
+				<td>Email</td>
+				<td><input type="text" name="eemail" value="{{un.email}}"></td>
+			</tr>
+
+            <tr>
+				<td>Address</td>
+				<td><input type="text" name="eaddress" value="{{un.address}}"></td>
+			</tr>
+
+            <tr>
+				<td>DOB</td>
+				<td><input type="date" name="edob" value="{{un.dob}}"></td>
+			</tr>
+            <tr>
+				<td colspan=2 align="center"><input type="submit" value="Update">
+                <input type="reset" value="Cancel"></td>
+			</tr>
+		</table>
+ 
+    </form>
+</body>
+</html>

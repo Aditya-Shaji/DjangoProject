@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyProfile</title>
+</head>
+<body>
+    <form action=""  method="post" id="myprofile">
+        {% csrf_token %}
+        <table border ="2" align="center" cellpadding="10">
+			<tr>	
+				<td><img src="{{un.file.url}}" width="100" height="100"></td>
+			</tr>
+
+			<tr>
+				<td>Name</td>
+				<td>{{un.name}}</td>
+			</tr>
+
+            <tr>
+				<td>Contact</td>
+				<td>{{un.contact}}</td>
+			</tr>
+
+            <tr>
+				<td>Email</td>
+				<td>{{un.email}}</td>
+			</tr>
+
+            <tr>
+				<td>Address</td>
+				<td>{{un.address}}</td>
+			</tr>
+
+            <tr>
+				<td>District</td>
+				<td>{{un.place.district.name}}</td>
+			</tr>
+
+            <tr>
+				<td>Place</td>
+				<td>{{un.place.name}}</td>
+			</tr>
+
+            <tr>
+				<td>DOB</td>
+				<td>{{un.dob}}</td>
+			</tr>
+		</table>
+ 
+    </form>
+</body>
+</html>

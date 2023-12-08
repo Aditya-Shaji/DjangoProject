@@ -33,7 +33,7 @@
         <td>{{forloop.counter}}</td>
         <td>{{i.name}}</td>
         <td><a href="{% url 'webadmin:deleted' i.id %}">Delete</a>
-            <a href="{% url 'webadmin:edited' i.id %}">Edit</a>
+            <a href="{% url 'webadmin:editdis' i.id %}">Edit</a>
         </td>
        </tr>
        {% endfor %}
